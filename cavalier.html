@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CAVALIER – COMING SOON </title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+    <style>
+        /* ============================================
+                   RESET & BASE - Minimal & Clean
+                ============================================ */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: #eaeaea;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 20px;
+        }
+        /* ============================================
+                   MAIN CONTAINER - Elegant Width
+                ============================================ */
+        
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        /* ============================================
+                   HEADER - Ultra Minimal
+                ============================================ */
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 0 30px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .logo {
+            font-size: 2.6rem;
+            font-weight: 900;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: #d4af37;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.15);
+        }
+        
+        .logo span {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 300;
+            letter-spacing: 8px;
+            color: #888;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+        
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: 0.3s;
+            padding-bottom: 4px;
+            border-bottom: 1px solid transparent;
+        }
+        
+        nav a:hover {
+            color: #d4af37;
+            border-bottom-color: #d4af37;
+        }
+        /* ============================================
+                   HERO / TAGLINE - Simple Statement
+                ============================================ */
+        
+        .hero {
+            text-align: center;
+            padding: 50px 0 40px;
+        }
+        
+        .hero h1 {
+            font-size: 1.1rem;
+            font-weight: 300;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: #888;
+        }
+        
+        .hero h1 strong {
+            color: #d4af37;
+            font-weight: 600;
+        }
+        /* ============================================
+                   GRID - Clean Cards
+                ============================================ */
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 30px;
+            margin: 30px 0 20px;
+        }
+        /* ============================================
+                   CARD - Ultra Minimalist
+                ============================================ */
+        
+        .card {
+            background: #111;
+            border-radius: 14px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid #1c1c1c;
+            position: relative;
+        }
+        
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: #d4af37;
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.06);
+        }
+        /* —— Image Area —— */
+        
+        .card-img {
+            width: 100%;
+            height: 280px;
+            background: #0e0e0e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4.2rem;
+            color: #d4af37;
+            border-bottom: 1px solid #181818;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card:hover .card-img {
+            background: #121212;
+        }
+        /* 👇👇👇 ===== Don't Be With The Herd ===== 👇👇👇 */
+        
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: 0.3s;
+        }
+        
+        .card:hover .card-img img {
+            transform: scale(1.03);
+        }
+        
+        .card-img i {
+            transition: 0.3s;
+            filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.08));
+        }
+        
+        .card:hover .card-img i {
+            transform: scale(1.04);
+            filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.2));
+        }
+        /* —— Badge —— */
+        
+        .badge {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: #d4af37;
+            color: #0a0a0a;
+            font-size: 0.55rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 4px 14px;
+            border-radius: 30px;
+            z-index: 10;
+        }
+        
+        .badge.sold {
+            background: #444;
+            color: #aaa;
+        }
+        
+        .badge.bestseller {
+            background: #e8c84a;
+        }
+        /* —— Card Body —— */
+        
+        .card-body {
+            padding: 20px 18px 22px;
+        }
+        
+        .card-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+            letter-spacing: 0.5px;
+        }
+        
+        .card-desc {
+            font-size: 0.8rem;
+            color: #777;
+            font-weight: 300;
+            margin-bottom: 14px;
+            line-height: 1.5;
+        }
+        /* —— Footer (Price + Button) —— */
+        
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #1a1a1a;
+            padding-top: 16px;
+        }
+        
+        .price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #d4af37;
+            letter-spacing: 0.5px;
+        }
+        
+        .price small {
+            font-size: 0.7rem;
+            font-weight: 300;
+            color: #666;
+            margin-left: 3px;
+        }
+        
+        .btn {
+            background: transparent;
+            border: 1.5px solid #d4af37;
+            color: #d4af37;
+            padding: 7px 20px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .btn:hover {
+            background: #d4af37;
+            color: #0a0a0a;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.15);
+        }
+        
+        .btn.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            border-color: #444;
+            color: #444;
+        }
+        
+        .btn.disabled:hover {
+            background: transparent;
+            color: #444;
+            box-shadow: none;
+        }
+        /* ============================================
+                   FOOTER - Minimal
+                ============================================ */
+        
+        footer {
+            margin-top: 60px;
+            padding: 30px 0 10px;
+            border-top: 1px solid #141414;
+            text-align: center;
+        }
+        
+        .socials {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 18px;
+        }
+        
+        .socials a {
+            color: #555;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+        
+        .socials a:hover {
+            color: #d4af37;
+            transform: scale(1.1);
+        }
+        
+        footer p {
+            font-size: 0.7rem;
+            color: #333;
+            letter-spacing: 1px;
+            font-weight: 300;
+        }
+        
+        footer p strong {
+            color: #d4af37;
+            font-weight: 600;
+        }
+        /* ============================================
+                   RESPONSIVE - Mobile First
+                ============================================ */
+        
+        @media (max-width: 700px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            nav {
+                gap: 18px;
+                flex-wrap: wrap;
+            }
+            nav a {
+                font-size: 0.75rem;
+            }
+            .logo {
+                font-size: 2rem;
+            }
+            .grid {
+                gap: 20px;
+            }
+            .card-img {
+                height: 220px;
+                font-size: 3.4rem;
+            }
+            .hero h1 {
+                font-size: 0.9rem;
+                letter-spacing: 4px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 5px;
+            }
+            .card-body {
+                padding: 16px 14px 18px;
+            }
+            .price {
+                font-size: 1.1rem;
+            }
+            .btn {
+                padding: 5px 14px;
+                font-size: 0.6rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- ===== HEADER ===== -->
+        <header>
+            <div class="logo">
+                CAVALIER
+            </div>
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">Collection</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </nav>
+        </header>
+
+        <!-- ===== HERO / TAGLINE ===== -->
+        <div class="hero">
+            <h1>— <strong></strong> Don't Be With The Herd —</h1>
+        </div>
+
+        <!-- ========================================================== -->
+        <!-- ===== PRODUCT GRID ===== -->
+        <!-- ========================================================== -->
+
+        <div class="grid">
+
+            <!-- ========================================================== -->
+            <!-- CARD 1 – GOLDEN LION (with ICON)                          -->
+            <!-- ========================================================== -->
+            <div class="card">
+                <div class="card-img">
+                    <img src="images/photo_2026-08-30_21-41-11.jpg" alt="T-shirt">
+
+                    <span class="badge">New</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">Don't Be With The Herd (Black)</div>
+                    <div class="card-footer">
+                        <span class="price">$10 <small>USD</small></span>
+                        <span class="price">$650 <small>EGP</small></span>
+                        <a href="https://ig.me/m/cavalier_249?text=أرغب%20في%20طلب%20تيشيرت%20Don't%20Be%20With%20The%20Herd" target="_blank" class="btn">ORDER</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========================================================== -->
+
+            <!-- ========================================================== -->
+            <!-- CARD 2 – REBEL SKULL (Sold Out)                           -->
+            <!-- ========================================================== -->
+            <div class="card">
+                <div class="card-img">
+                    <img src="images/photo_2026-08-30_21-41-03.jpg" alt="T-shirt">
+
+
+                    <span class="badge">New</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">Sudanese Drip</div>
+                    <div class="card-footer">
+                        <span class="price">$10 <small>USD</small></span>
+                        <span class="price">$650 <small>EGP</small></span>
+                        <a href="https://ig.me/m/cavalier_249?text=أرغب%20في%20طلب%20تيشيرت%20Sudanese%20Drip" target="_blank" class="btn">ORDER</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========================================================== -->
+            <!-- CARD 3 – FALCON FEATHER (with ICON)                       -->
+            <!-- ========================================================== -->
+            <div class="card">
+                <div class="card-img">
+                    <img src="images/photo_2026-08-30_21-41-01.jpg" alt="T-shirt">
+
+
+                    <span class="badge">New</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">Don't Be With The Herd (Blue)</div>
+                    <div class="card-footer">
+                        <span class="price">$10 <small>USD</small></span>
+                        <span class="price">$650 <small>EGP</small></span>
+                        <a href="https://ig.me/m/cavalier_249?text=أرغب%20في%20طلب%20تيشيرت%20Don't%20Be%20With%20The%20Herd%20(Blue)" target="_blank" class="btn">ORDER</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========================================================== -->
+            <!-- CARD 4 – VICTORY BOLT (with ICON)                         -->
+            <!-- ========================================================== -->
+            <div class="card">
+                <div class="card-img">
+                    <img src="images/photo_2026-08-30_21-40-50.jpg" alt="T-shirt">
+
+                    <span class="badge bestseller">New</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">Don't Be With The Herd (Pink)</div>
+                    <div class="card-footer">
+                        <span class="price">$10 <small>USD</small></span>
+                        <span class="price">$650 <small>EGP</small></span>
+                        <a href="https://ig.me/m/cavalier_249?text=أرغب%20في%20طلب%20تيشيرت%20Don't%20Be%20With%20The%20Herd%20(Pink)" target="_blank" class="btn">ORDER</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========================================================== -->
+            <!-- CARD 5 – WARRIOR MASK (Limited)                           -->
+            <!-- ========================================================== -->
+            <div class="card">
+                <div class="card-img">
+                    <img src="images/photo_2026-08-30_21-40-57.jpg" alt="T-shirt">
+
+
+                    <span class="badge">New</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">Cavalier Luxury Drip</div>
+                    <div class="card-footer">
+                        <span class="price">$15 <small>USD</small></span>
+                        <span class="price">$800 <small>EGP</small></span>
+                        <a href="https://ig.me/m/cavalier_249?text=أرغب%20في%20طلب%20تيشيرت%20Cavalier%20Luxury%20Drip" target="_blank" class="btn">ORDER</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========================================================== -->
+            <!-- ===== CARD 6 – NEW: PHANTOM KNIGHT (with YOUR IMAGE) ===== -->
+            <!-- ========================================================== -->
+            <div class="card">
+                <div class="card-img">
+                    <img src="images/photo_2026-08-30_21-40-54.jpg" alt="T-shirt">
+
+
+                    <span class="badge">New</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">Cavalier Heritage</div>
+                    <div class="card-footer">
+                        <span class="price">$10 <small>USD</small></span>
+                        <span class="price">$650 <small>EGP</small></span>
+                        <a href="https://ig.me/m/cavalier_249?text=أرغب%20في%20طلب%20تيشيرت%20Cavalier%20Heritage" target="_blank" class="btn">ORDER</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- ===== END OF GRID ===== -->
+
+        <!-- ===== FOOTER ===== -->
+        <footer>
+            <div class="socials">
+                <a href="https://www.instagram.com/cavalier_249" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://vm.tiktok.com/ZS9BQo27RCVTD-8u9xv/" tabindex="_blank"><i class="fab fa-tiktok"></i></a>
+            </div>
+            <p>&copy; 2026 <strong>CAVALIER</strong> · All rights reserved.<br />Crafted in the shadows.</p>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>
